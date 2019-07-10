@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "BlockSites",
+    "version": "1.0",
+    "description": "阻止网页跟踪",
+    "background": {
+        "page": "background.html",
+        "persistent": true
+    },
+    "permissions": [
+        "storage",
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>"
+    ],
+    "icons": {
+        "48": "icon48.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "48": "icon48.png"
+        },
+        "default_title": "Block Tracking",
+        "default_popup": "settings.html"
+    }
+}
