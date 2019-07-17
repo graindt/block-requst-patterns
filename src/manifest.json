@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "BlockSites",
+    "name": "BlockRequests",
     "version": "1.0",
-    "description": "阻止网页跟踪",
+    "description": "Block requests based on patterns.",
     "background": {
         "page": "background.html",
         "persistent": true
@@ -14,13 +14,13 @@
         "<all_urls>"
     ],
     "icons": {
-        "48": "icon48.png"
+        "128": "icon.png"
     },
     "browser_action": {
         "default_icon": {
-            "48": "icon48.png"
+            "128": "icon.png"
         },
-        "default_title": "Block Tracking",
+        "default_title": "Block Requests",
         "default_popup": "settings.html"
     }
 }
