@@ -28,7 +28,8 @@ chrome.webRequest.onBeforeRequest.addListener(
     },
     {
         urls: [
-            "*://ajax.googleapis.com/ajax/libs/jquery/*"
+            "*://ajax.googleapis.com/ajax/libs/jquery/*",
+            "*://code.jquery.com/jquery*.js"
         ]
     },
     [
