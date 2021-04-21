@@ -36,3 +36,17 @@ chrome.webRequest.onBeforeRequest.addListener(
         "blocking"
     ]
 );
+
+chrome.webRequest.onBeforeRequest.addListener(
+    function (details) {
+        return { redirectUrl: details.url.replace("www.google.com", "www.recaptcha.net") };
+    },
+    {
+        urls: [
+            "*://www.google.com/recaptcha/*"
+        ]
+    },
+    [
+        "blocking"
+    ]
+);
