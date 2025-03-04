@@ -10,10 +10,17 @@ import defaultPatterns from './patterns.js';
             chrome.storage.local.set({
                 pattern: JSON.stringify(defaultPatterns)
             }, function() {
-                txt.value = JSON.stringify(defaultPatterns);
+                txt.value = JSON.stringify(defaultPatterns, null, 2);
             });
         } else {
-            txt.value = result.pattern;
+            try {
+                // Parse and re-stringify to ensure proper formatting
+                const patterns = JSON.parse(result.pattern);
+                txt.value = JSON.stringify(patterns, null, 2);
+            } catch (e) {
+                // Fallback to raw value if JSON parsing fails
+                txt.value = result.pattern;
+            }
         }
     });
 
