@@ -1,3 +1,5 @@
+import defaultPatterns from './patterns.js';
+
 // Dynamic rules for patterns stored in chrome.storage.local
 let nextRuleId = 1;
 
@@ -22,7 +24,7 @@ async function initializeRuleCounter() {
 function loadAndApplyPatterns() {
     chrome.storage.local.get(['pattern'], function(result) {
         try {
-            const patterns = result.pattern ? JSON.parse(result.pattern) : [];
+            const patterns = result.pattern ? JSON.parse(result.pattern) : defaultPatterns;
             if (patterns && patterns.length > 0) {
                 updateMyDynamicRules(patterns);
             }
@@ -36,7 +38,7 @@ function loadAndApplyPatterns() {
 chrome.storage.onChanged.addListener((changes, namespace) => {
     if (namespace === 'local' && changes.pattern) {
         try {
-            const patterns = changes.pattern.newValue ? JSON.parse(changes.pattern.newValue) : [];
+            const patterns = changes.pattern.newValue ? JSON.parse(changes.pattern.newValue) : defaultPatterns;
             updateMyDynamicRules(patterns);
         } catch (error) {
             console.error("Error processing pattern changes:", error);
@@ -54,8 +56,8 @@ function createStaticRedirectRules() {
                 type: 'redirect',
                 redirect: {
                     transform: {
-                        host: 'cdn.staticfile.org',
-                        path: '/ajax/libs/${path}'
+                        host: 'cdn.staticfile.net',
+                        path: '${path}'
                     }
                 }
             },

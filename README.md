@@ -49,7 +49,7 @@ The extension automatically redirects certain services to privacy-friendly alter
 
 1. **Cloudflare CDN → Staticfile CDN**
    - From: `cdnjs.cloudflare.com/ajax/libs/*`
-   - To: `cdn.staticfile.org/ajax/libs/*`
+   - To: `cdn.staticfile.net/*`
 
 2. **Google reCAPTCHA → Recaptcha.net**
    - From: `www.google.com/recaptcha/*`

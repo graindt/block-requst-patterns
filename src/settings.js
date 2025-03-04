@@ -1,11 +1,6 @@
-(function () {
-    const defaultPatterns = [
-        "*://www.google-analytics.com/*",
-        "*://google-analytics.com/*",
-        "*://ssl.google-analytics.com/*",
-        "*://*.g.doubleclick.net/*"
-    ];
+import defaultPatterns from './patterns.js';
 
+(function () {
     const txt = document.getElementById("requst-patterns");
 
     // Load patterns from storage
