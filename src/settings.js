@@ -1,23 +1,34 @@
 (function () {
-    var defaultPatterns = [
+    const defaultPatterns = [
         "*://www.google-analytics.com/*",
         "*://google-analytics.com/*",
         "*://ssl.google-analytics.com/*",
         "*://*.g.doubleclick.net/*"
     ];
 
-    var patterns = localStorage['pattern'];
-    if (patterns === undefined) {
-        localStorage['pattern'] = JSON.stringify(defaultPatterns);
-        patterns = localStorage['pattern'];
-    }
-    var txt = document.getElementById("requst-patterns");
-    txt.value = patterns;
+    const txt = document.getElementById("requst-patterns");
+
+    // Load patterns from storage
+    chrome.storage.local.get(['pattern'], function(result) {
+        if (!result.pattern) {
+            // Initialize with default patterns
+            chrome.storage.local.set({
+                pattern: JSON.stringify(defaultPatterns)
+            }, function() {
+                txt.value = JSON.stringify(defaultPatterns);
+            });
+        } else {
+            txt.value = result.pattern;
+        }
+    });
 
     document.getElementById("save").onclick = function () {
-        localStorage['pattern'] = txt.value;
-        document.getElementById("msg").textContent = "Save successful. Restart Browser to take effect.";
-        setTimeout(clearMessage, 1000);
+        chrome.storage.local.set({
+            pattern: txt.value
+        }, function() {
+            document.getElementById("msg").textContent = "Save successful";
+            setTimeout(clearMessage, 1000);
+        });
     }
 
     function clearMessage() {
