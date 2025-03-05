@@ -1,4 +1,7 @@
 export default [
+    "*://browser.events.data.msn.cn/*",
+    "*://browser.events.data.microsoft.com/*",
+
     "*://google-analytics.com/*",
     "*://*.google-analytics.com/*",
     "*://*.g.doubleclick.net/*",
