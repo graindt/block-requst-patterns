@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "BlockRequests",
-    "version": "2.0",
+    "version": "2.0.1",
     "description": "Block requests based on patterns.",
     "background": {
         "service_worker": "stop.js",
@@ -16,11 +16,11 @@
         "<all_urls>"
     ],
     "icons": {
-        "128": "icon.png"
+        "300": "icon.png"
     },
     "action": {
         "default_icon": {
-            "128": "icon.png"
+            "300": "icon.png"
         },
         "default_title": "Block Requests",
         "default_popup": "settings.html"
